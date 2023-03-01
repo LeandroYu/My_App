@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { faBars, faBell, faSortDown, } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,20 +11,24 @@ export class LoginComponent implements OnInit{
   faBar = faBars;
   faBell = faBell;
   faSortDown = faSortDown;
-  email: string = '';
+  account: string = '';
   password: string = '';
 
-  // constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.email = 'Malu Carvalho';
+    this.account = 'Malu Carvalho';
   }
 
   clearInput() {
-    this.email = '';
+    this.account = '';
   }
 
   onSubmit() {
-    console.log(this.email);
+    const loginData = {account: this.account};
+    this.http.post('api/v1/login', loginData).subscribe(
+      response => console.log('Sucess!', response),
+      error => console.error('Error!', error)
+    );
   }
 }

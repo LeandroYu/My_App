@@ -21,7 +21,7 @@
       </div>
       <form class="login-form" #loginForm = "ngForm" (ngSubmit) = "onSubmit()">
         <div class="form-group">
-          <input type="text" [(ngModel)]="email" name="email" placeholder="Conta">
+          <input type="text" [(ngModel)]="account" name="email" placeholder="Conta">
           <button class="notifications-btn" (click)="clearInput()"><fa-icon [icon]="faSortDown"></fa-icon></button>
         </div>
         <div class="account-form">
