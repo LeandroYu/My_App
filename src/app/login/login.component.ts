@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { faBars, faBell, faSortDown, } from '@fortawesome/free-solid-svg-icons';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,7 @@ export class LoginComponent implements OnInit{
   account: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.account = 'Malu Carvalho';
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit{
     const loginData = {account: this.account};
     this.http.post('api/v1/login', loginData).subscribe(
       response => console.log('Sucess!', response),
-      error => console.error('Error!', error)
+      error => this.dialog.open(ErrorDialogComponent)
     );
   }
 }
