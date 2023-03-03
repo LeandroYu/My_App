@@ -19,14 +19,14 @@
           <i class="fas fa-bell"></i>
         </button>
       </div>
-      <form class="login-form" #loginForm = "ngForm" (ngSubmit) = "onSubmit()">
+      <form class="login-form" (ngSubmit) = "onSubmit()">
         <div class="form-group">
-          <input type="text" [(ngModel)]="account" name="email" placeholder="Conta">
-          <button class="notifications-btn" (click)="clearInput()"><fa-icon [icon]="faSortDown"></fa-icon></button>
+          <input type="text" [(ngModel)]="account" name="email" placeholder="Nome">
+          <button type="button" class="notifications-btn" (click)="clearInput()"><fa-icon [icon]="faSortDown"></fa-icon></button>
         </div>
         <div class="account-form">
-          <label>AG 1234</label>
-          <label> C/C 12345-6</label>
+          <input type="text" [(ngModel)]="agencia" name="agencia" placeholder="Agencia">
+          <input type="text" [(ngModel)]="conta" name="conta" placeholder="Conta">
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">Acessar conta</button>
